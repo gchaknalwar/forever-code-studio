@@ -1,7 +1,6 @@
-import React from 'react'
+import ComingSoon from './components/ComingSoon'
 
-const App = () => {
-  return <div></div>
+function App() {
+  return <ComingSoon />
 }
-
 export default App
