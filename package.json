@@ -8,10 +8,11 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx",
     "lint:fix": "eslint . --ext js,jsx --fix",
-    "preview": "vite preview",
+    "preview": "npm run build && wrangler dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
@@ -22,6 +23,7 @@
     "react-redux": "^9.3.0"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.47.0",
     "@eslint/js": "^9.39.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
@@ -40,7 +42,8 @@
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^3.4.19",
-    "vite": "^8.1.1"
+    "vite": "^8.1.1",
+    "wrangler": "^4.114.0"
   },
   "lint-staged": {
     "*.{js,jsx}": [
