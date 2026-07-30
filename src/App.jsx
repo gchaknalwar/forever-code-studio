@@ -1,6 +1,26 @@
-import ComingSoon from './components/ComingSoon'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
+import ScrollToHash from './components/ScrollToHash.jsx'
+import Home from './pages/Home'
+import AboutPage from './pages/AboutPage'
+import ProjectDetail from './pages/ProjectDetail'
+import NotFound from './pages/NotFound'
 
-function App() {
-  return <ComingSoon />
+export default function App() {
+  return (
+    <div className="min-h-screen bg-[#0B0D12]">
+      <ScrollToHash />
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/work/:id" element={<ProjectDetail />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      <Footer />
+    </div>
+  )
 }
-export default App
