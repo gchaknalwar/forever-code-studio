@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import SectionHeading from '../common/SectionHeading'
+import Card from '../common/Card'
 
 // lucide-react dropped brand icons in some versions — using inline SVGs to be safe.
 const GithubIcon = (props) => (
@@ -48,34 +50,16 @@ export default function Team() {
   return (
     <section id="team" className="relative bg-[#0B0D12] py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* ================= HEADER ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+        <SectionHeading
+          eyebrow="The team"
+          heading="Small team. Senior hands. Zero handoffs."
           className="mb-16 max-w-xl"
-        >
-          <p className="mb-3 text-sm font-medium tracking-widest text-white/40 uppercase">
-            The team
-          </p>
-          <h2 className="font-['Space_Grotesk'] text-4xl font-semibold tracking-tight text-white md:text-5xl">
-            Small team. Senior hands. Zero handoffs.
-          </h2>
-        </motion.div>
+        />
 
         {/* ================= GRID ================= */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {TEAM.map((member, i) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
-              whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]"
-            >
+            <Card key={member.name} hoverLift delay={i * 0.08} className="group">
               {/* Avatar placeholder */}
               <div className={`relative h-64 bg-gradient-to-br ${member.gradient} overflow-hidden`}>
                 <span className="absolute inset-0 flex items-center justify-center font-['Space_Grotesk'] text-7xl font-bold text-white/20 transition-transform duration-500 select-none group-hover:scale-110">
@@ -109,7 +93,7 @@ export default function Team() {
                 </h3>
                 <p className="mt-1 text-sm text-white/40">{member.role}</p>
               </div>
-            </motion.div>
+            </Card>
           ))}
         </div>
       </div>

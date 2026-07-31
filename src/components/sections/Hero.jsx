@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
+import Button from '../common/Button'
 
 const STATS = [
   { value: '40+', label: 'Projects shipped' },
@@ -122,21 +123,12 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div variants={line} className="mt-10 flex flex-wrap items-center gap-4">
-          <a
-            href="#contact"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white py-3.5 pr-5 pl-6 text-sm font-semibold text-[#0B0D12]"
-          >
-            <span className="relative z-10">Start a project</span>
-            <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#5B6CFF] to-[#B6FF3B] transition-transform duration-300 group-hover:translate-y-0" />
-          </a>
-
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-white/80 transition-colors duration-300 hover:border-white/30 hover:text-white"
-          >
+          <Button as="link" to="/#contact" variant="primary">
+            Start a project
+          </Button>
+          <Button as="link" to="/#work" variant="secondary" showArrow={false}>
             See our work
-          </a>
+          </Button>
         </motion.div>
 
         {/* Stats */}

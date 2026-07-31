@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import SectionHeading from '../common/SectionHeading'
 
 const MILESTONES = [
   {
@@ -48,20 +49,11 @@ export default function Story() {
     <section id="story" className="relative bg-[#0B0D12] py-28 md:py-36">
       <div className="mx-auto max-w-5xl px-6 md:px-10">
         {/* ================= HEADER ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mb-20"
-        >
-          <p className="mb-3 text-sm font-medium tracking-widest text-white/40 uppercase">
-            Our story
-          </p>
-          <h2 className="max-w-xl font-['Space_Grotesk'] text-4xl font-semibold tracking-tight text-white md:text-5xl">
-            From one laptop to a studio that ships.
-          </h2>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Our story"
+          heading="From one laptop to a studio that ships."
+          className="mb-20 max-w-xl"
+        />
 
         {/* ================= TIMELINE ================= */}
         <div ref={containerRef} className="relative pl-10 md:pl-14">
