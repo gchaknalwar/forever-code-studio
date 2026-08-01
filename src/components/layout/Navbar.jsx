@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, ArrowUpRight } from 'lucide-react'
 import Logo from './Logo'
 import MobileMenu from './MobileMenu'
 
@@ -106,11 +106,11 @@ export default function Navbar() {
 
           {/* ================= MOBILE TOGGLE ================= */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen(true)}
             className="relative z-[60] text-white md:hidden"
-            aria-label="Toggle menu"
+            aria-label="Open menu"
           >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+            <Menu size={26} />
           </button>
         </nav>
       </header>
@@ -120,6 +120,7 @@ export default function Navbar() {
         isOpen={menuOpen}
         links={NAV_LINKS}
         onNavigate={handleMobileNavigate}
+        onClose={() => setMenuOpen(false)}
         whatsappLink={WHATSAPP_LINK}
       />
     </>
