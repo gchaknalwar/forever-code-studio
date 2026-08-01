@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Zap, Target, Users, Sparkles, ArrowUpRight } from 'lucide-react'
 
@@ -160,14 +161,14 @@ export default function AboutPage() {
         <h2 className="mb-8 font-['Space_Grotesk'] text-3xl font-semibold tracking-tight text-white md:text-4xl">
           Want to work together?
         </h2>
-        <a
-          href="/#contact"
+        <Link
+          to="/contact"
           className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white py-3.5 pr-5 pl-6 text-sm font-semibold text-[#0B0D12]"
         >
           <span className="relative z-10">Start a project</span>
           <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#5B6CFF] to-[#B6FF3B] transition-transform duration-300 group-hover:translate-y-0" />
-        </a>
+        </Link>
       </motion.section>
     </main>
   )

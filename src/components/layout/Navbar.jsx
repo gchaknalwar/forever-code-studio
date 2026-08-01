@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import Logo from './Logo'
+import MobileMenu from './MobileMenu'
+
+// Replace with your real WhatsApp number (country code, no + or spaces)
+const WHATSAPP_NUMBER = '91XXXXXXXXXX'
+const WHATSAPP_MESSAGE = "Hi! I found your site and I'd like to talk about a project."
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
 const NAV_LINKS = [
   { name: 'Work', href: '/#work' },
@@ -10,6 +16,7 @@ const NAV_LINKS = [
   { name: 'Team', href: '/#team' },
   { name: 'Reviews', href: '/#reviews' },
   { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -29,6 +36,11 @@ export default function Navbar() {
       document.body.style.overflow = ''
     }
   }, [menuOpen])
+
+  const handleMobileNavigate = (linkName) => {
+    setActive(linkName)
+    setMenuOpen(false)
+  }
 
   return (
     <>
@@ -70,7 +82,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* ================= RIGHT SIDE: availability + CTA ================= */}
+          {/* ================= RIGHT SIDE: availability + WhatsApp CTA ================= */}
           <div className="hidden items-center gap-5 md:flex">
             <div className="flex items-center gap-2 text-xs text-white/60">
               <span className="relative flex h-2 w-2">
@@ -80,14 +92,16 @@ export default function Navbar() {
               Available for work
             </div>
 
-            <Link
-              to="/#contact"
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-full bg-white py-2 pr-3 pl-4 text-sm font-semibold text-[#0B0D12]"
             >
               <span className="relative z-10">Let's talk</span>
               <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               <span className="absolute inset-0 -z-0 translate-y-full bg-gradient-to-r from-[#5B6CFF] to-[#B6FF3B] transition-transform duration-300 group-hover:translate-y-0" />
-            </Link>
+            </a>
           </div>
 
           {/* ================= MOBILE TOGGLE ================= */}
@@ -101,53 +115,13 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* ================= MOBILE FULLSCREEN MENU ================= */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex flex-col justify-center bg-[#0B0D12] px-8 md:hidden"
-          >
-            <ul className="flex flex-col gap-2">
-              {NAV_LINKS.map((link, i) => (
-                <motion.li
-                  key={link.name}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 * i, duration: 0.4, ease: 'easeOut' }}
-                >
-                  <Link
-                    to={link.href}
-                    onClick={() => {
-                      setActive(link.name)
-                      setMenuOpen(false)
-                    }}
-                    className="block py-3 font-['Space_Grotesk'] text-4xl font-semibold text-white/90"
-                  >
-                    {link.name}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="mt-10 flex items-center gap-2 text-sm text-white/50"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#B6FF3B] opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#B6FF3B]" />
-              </span>
-              Available for freelance work
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ================= MOBILE MENU ================= */}
+      <MobileMenu
+        isOpen={menuOpen}
+        links={NAV_LINKS}
+        onNavigate={handleMobileNavigate}
+        whatsappLink={WHATSAPP_LINK}
+      />
     </>
   )
 }

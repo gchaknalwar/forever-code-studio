@@ -123,7 +123,7 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div variants={line} className="mt-10 flex flex-wrap items-center gap-4">
-          <Button as="link" to="/#contact" variant="primary">
+          <Button as="link" to="/contact" variant="primary">
             Start a project
           </Button>
           <Button as="link" to="/#work" variant="secondary" showArrow={false}>
