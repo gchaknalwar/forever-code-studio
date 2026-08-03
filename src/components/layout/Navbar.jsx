@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Menu, ArrowUpRight } from 'lucide-react'
 import Logo from './Logo'
@@ -11,6 +11,7 @@ const WHATSAPP_MESSAGE = "Hi! I found your site and I'd like to talk about a pro
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
 const NAV_LINKS = [
+  { name: 'Services', href: '/#services' },
   { name: 'Work', href: '/#work' },
   { name: 'Story', href: '/#story' },
   { name: 'Team', href: '/#team' },
@@ -22,7 +23,8 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [active, setActive] = useState('Work')
+  const [active, setActive] = useState('')
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -36,6 +38,39 @@ export default function Navbar() {
       document.body.style.overflow = ''
     }
   }, [menuOpen])
+
+  // Set active tab based on the current route for standalone pages.
+  useEffect(() => {
+    if (location.pathname === '/about') setActive('About')
+    else if (location.pathname === '/contact') setActive('Contact')
+    else if (location.pathname.startsWith('/work/')) setActive('')
+  }, [location.pathname])
+
+  // Scroll-spy: on the home page, highlight whichever section is currently
+  // in view as the user scrolls, instead of only updating on click.
+  useEffect(() => {
+    if (location.pathname !== '/') return
+
+    const hashLinks = NAV_LINKS.filter((l) => l.href.startsWith('/#'))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const match = hashLinks.find((l) => l.href === `/#${entry.target.id}`)
+            if (match) setActive(match.name)
+          }
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    )
+
+    hashLinks.forEach((link) => {
+      const el = document.getElementById(link.href.replace('/#', ''))
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [location.pathname])
 
   const handleMobileNavigate = (linkName) => {
     setActive(linkName)

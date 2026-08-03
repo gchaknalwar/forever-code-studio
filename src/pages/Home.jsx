@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Hero from '../components/sections/Hero'
+import Services from '../components/sections/Services'
 import Projects from '../components/sections/Projects'
 import Story from '../components/sections/Story'
 import Team from '../components/sections/Team'
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <Services />
       <Projects />
       <Story />
       <Team />

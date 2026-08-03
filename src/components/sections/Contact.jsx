@@ -80,16 +80,16 @@ export default function Contact() {
 
             <a
               href="mailto:hello@forevercodestudio.com"
-              className="group inline-flex items-center gap-2 font-medium text-white"
+              className="group inline-flex flex-wrap items-center gap-2 font-medium md:gap-3"
             >
-              <Mail className="h-4 w-4 text-white/40" />
-              <span className="relative">
+              <Mail className="h-4 w-4 shrink-0 text-white/40" />
+              <span className="relative text-base break-all text-white sm:text-lg sm:break-normal">
                 hello@forevercodestudio.com
                 <span className="absolute -bottom-0.5 left-0 h-px w-full overflow-hidden bg-white/20">
                   <span className="block h-full w-full -translate-x-full bg-gradient-to-r from-[#5B6CFF] to-[#B6FF3B] transition-transform duration-500 group-hover:translate-x-0" />
                 </span>
               </span>
-              <ArrowUpRight className="h-4 w-4 text-white/40 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="h-4 w-4 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
             <div className="mt-10 flex items-center gap-2 text-xs text-white/50">
