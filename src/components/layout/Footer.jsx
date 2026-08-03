@@ -23,10 +23,14 @@ const TwitterIcon = (props) => (
 )
 
 const SOCIALS = [
-  { icon: GithubIcon, href: 'https://github.com/yourhandle', label: 'GitHub' },
-  { icon: LinkedinIcon, href: 'https://linkedin.com/in/yourhandle', label: 'LinkedIn' },
-  { icon: TwitterIcon, href: 'https://twitter.com/yourhandle', label: 'Twitter' },
-  { icon: Mail, href: 'mailto:hello@yourname.dev', label: 'Email' },
+  { icon: GithubIcon, href: 'https://github.com/forevercodestudio', label: 'GitHub' },
+  {
+    icon: LinkedinIcon,
+    href: 'https://www.linkedin.com/in/forever-code-studio-5192b6425/?skipRedirect=true',
+    label: 'LinkedIn',
+  },
+  { icon: TwitterIcon, href: 'https://x.com/forevercodestud', label: 'Twitter' },
+  { icon: Mail, href: 'mailto:forevercodestudio@gmail.com', label: 'Email' },
 ]
 
 const FOOTER_LINKS = [
@@ -106,11 +110,11 @@ export default function Footer() {
               Got a project in mind?
             </p>
             <a
-              href="mailto:hello@forevercodestudio.com"
+              href="mailto:forevercodestudio@gmail.com"
               className="group inline-flex flex-wrap items-center gap-2 font-['Space_Grotesk'] font-semibold tracking-tight text-white sm:gap-3"
             >
               <span className="relative text-2xl break-all sm:text-4xl sm:break-normal md:text-6xl">
-                hello@forevercodestudio.com
+                @forevercodestudio
                 <span className="absolute -bottom-1 left-0 h-[2px] w-full overflow-hidden bg-white/20">
                   <span className="block h-full w-full -translate-x-full bg-gradient-to-r from-[#5B6CFF] to-[#B6FF3B] transition-transform duration-500 ease-out group-hover:translate-x-0" />
                 </span>

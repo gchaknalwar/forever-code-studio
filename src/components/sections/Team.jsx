@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
+import { Users, Sparkles } from 'lucide-react'
 import SectionHeading from '../common/SectionHeading'
-import Card from '../common/Card'
 
 // lucide-react dropped brand icons in some versions — using inline SVGs to be safe.
 const GithubIcon = (props) => (
@@ -19,32 +19,17 @@ const TwitterIcon = (props) => (
   </svg>
 )
 
-const TEAM = [
-  {
-    name: 'Govind Chaknalwar',
-    role: 'Founder · Full-Stack Engineer',
-    gradient: 'from-[#5B6CFF] to-[#2C3475]',
-    socials: { github: '#', linkedin: '#', twitter: '#' },
+// TODO: swap in your real name, role, and socials
+const FOUNDER = {
+  name: 'Govind Chaknalwar',
+  role: 'Founder & Full-Stack Developer',
+  gradient: 'from-[#5B6CFF]/30 to-[#B6FF3B]/20',
+  socials: {
+    github: 'https://github.com/gchaknalwar',
+    linkedin: 'https://www.linkedin.com/in/govind-chaknalwar-b35278215/?skipRedirect=true',
+    twitter: 'https://x.com/255_Boss',
   },
-  {
-    name: 'Teammate Name',
-    role: 'Product Designer',
-    gradient: 'from-[#B6FF3B] to-[#4C5C1E]',
-    socials: { github: '#', linkedin: '#', twitter: '#' },
-  },
-  {
-    name: 'Teammate Name',
-    role: 'Backend Engineer',
-    gradient: 'from-[#FF6B9D] to-[#5B2C4A]',
-    socials: { github: '#', linkedin: '#', twitter: '#' },
-  },
-  {
-    name: 'Teammate Name',
-    role: 'Mobile Engineer',
-    gradient: 'from-[#3BC9DB] to-[#1B4A52]',
-    socials: { github: '#', linkedin: '#', twitter: '#' },
-  },
-]
+}
 
 export default function Team() {
   return (
@@ -52,50 +37,83 @@ export default function Team() {
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <SectionHeading
           eyebrow="The team"
-          heading="Small team. Senior hands. Zero handoffs."
+          heading="One senior hand today. Growing soon."
           className="mb-16 max-w-xl"
         />
 
-        {/* ================= GRID ================= */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {TEAM.map((member, i) => (
-            <Card key={member.name} hoverLift delay={i * 0.08} className="group">
-              {/* Avatar placeholder */}
-              <div className={`relative h-64 bg-gradient-to-br ${member.gradient} overflow-hidden`}>
-                <span className="absolute inset-0 flex items-center justify-center font-['Space_Grotesk'] text-7xl font-bold text-white/20 transition-transform duration-500 select-none group-hover:scale-110">
-                  {member.name.charAt(0)}
-                </span>
+          {/* ================= FOUNDER CARD ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]"
+          >
+            <div className={`relative h-64 bg-gradient-to-br ${FOUNDER.gradient} overflow-hidden`}>
+              <span className="absolute inset-0 flex items-center justify-center font-['Space_Grotesk'] text-7xl font-bold text-white/20 transition-transform duration-500 select-none group-hover:scale-110">
+                {FOUNDER.name.charAt(0)}
+              </span>
 
-                {/* Social overlay — slides up on hover */}
-                <div className="absolute inset-x-0 bottom-0 flex translate-y-full items-center justify-center gap-3 bg-gradient-to-t from-black/70 to-transparent py-4 transition-transform duration-300 group-hover:translate-y-0">
-                  {[
-                    { Icon: GithubIcon, href: member.socials.github },
-                    { Icon: LinkedinIcon, href: member.socials.linkedin },
-                    { Icon: TwitterIcon, href: member.socials.twitter },
-                  ].map(({ Icon, href }, idx) => (
-                    <a
-                      key={idx}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20"
-                    >
-                      <Icon className="h-3.5 w-3.5" />
-                    </a>
-                  ))}
-                </div>
+              <div className="absolute inset-x-0 bottom-0 flex translate-y-full items-center justify-center gap-3 bg-gradient-to-t from-black/70 to-transparent py-4 transition-transform duration-300 group-hover:translate-y-0">
+                {[
+                  { Icon: GithubIcon, href: FOUNDER.socials.github },
+                  { Icon: LinkedinIcon, href: FOUNDER.socials.linkedin },
+                  { Icon: TwitterIcon, href: FOUNDER.socials.twitter },
+                ].map(({ Icon, href }, idx) => (
+                  <a
+                    key={idx}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20"
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                  </a>
+                ))}
               </div>
+            </div>
 
-              {/* Info */}
-              <div className="p-5">
-                <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-white">
-                  {member.name}
-                </h3>
-                <p className="mt-1 text-sm text-white/40">{member.role}</p>
+            <div className="p-5">
+              <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-white">
+                {FOUNDER.name}
+              </h3>
+              <p className="mt-1 text-sm text-white/40">{FOUNDER.role}</p>
+            </div>
+          </motion.div>
+
+          {/* ================= HIRING SOON PLACEHOLDER CARDS ================= */}
+          {Array.from({ length: 3 }).map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.08 * (i + 1), ease: 'easeOut' }}
+              className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-white/[0.015] px-6 py-16 text-center"
+            >
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
+                <Users className="h-5 w-5 text-white/30" />
               </div>
-            </Card>
+              <p className="text-sm font-medium text-white/50">Open seat</p>
+              <p className="mt-2 max-w-[180px] text-xs leading-relaxed text-white/25">
+                Hiring senior designers &amp; engineers as the studio grows
+              </p>
+            </motion.div>
           ))}
         </div>
+
+        {/* ================= FOOTNOTE ================= */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 flex items-center justify-center gap-2 text-xs font-medium tracking-wide text-white/30 uppercase"
+        >
+          <Sparkles className="h-3.5 w-3.5 text-[#B6FF3B]" />
+          Currently solo — hiring senior talent as demand grows
+        </motion.div>
       </div>
     </section>
   )

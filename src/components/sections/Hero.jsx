@@ -3,8 +3,8 @@ import { ChevronDown } from 'lucide-react'
 import Button from '../common/Button'
 
 const STATS = [
-  { value: '40+', label: 'Projects shipped' },
-  { value: '25+', label: 'Happy clients' },
+  { value: '10+', label: 'Projects shipped' },
+  { value: '6+', label: 'Happy clients' },
   { value: '3+', label: 'Years building' },
   { value: '98%', label: 'On-time delivery' },
 ]
@@ -144,22 +144,6 @@ export default function Hero() {
               <p className="mt-1 text-sm text-white/40">{stat.label}</p>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
-
-      {/* ================= SCROLL INDICATOR ================= */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-      >
-        <span className="text-[10px] tracking-[0.2em] text-white/30 uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown className="h-4 w-4 text-white/30" />
         </motion.div>
       </motion.div>
     </section>

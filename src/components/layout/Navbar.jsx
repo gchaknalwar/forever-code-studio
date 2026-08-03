@@ -6,7 +6,7 @@ import Logo from './Logo'
 import MobileMenu from './MobileMenu'
 
 // Replace with your real WhatsApp number (country code, no + or spaces)
-const WHATSAPP_NUMBER = '91XXXXXXXXXX'
+const WHATSAPP_NUMBER = '9156937665'
 const WHATSAPP_MESSAGE = "Hi! I found your site and I'd like to talk about a project."
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 

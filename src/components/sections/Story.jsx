@@ -4,34 +4,28 @@ import SectionHeading from '../common/SectionHeading'
 
 const MILESTONES = [
   {
-    year: '2022',
+    year: '2026',
     title: 'The studio begins',
     description:
-      'Started freelancing solo — one laptop, one client, and a promise to never ship sloppy code.',
+      'Forever Code Studio launches — one developer, one laptop, and a promise to never ship sloppy code.',
   },
   {
-    year: '2023',
-    title: 'First team hire',
+    year: 'Today',
+    title: 'Taking on first clients',
     description:
-      'Brought on a designer and a second engineer. Forever Code Studio officially became a team.',
+      'Onboarding early projects — SaaS dashboards, landing pages, and full-stack builds, all built hands-on, no juniors, no handoffs.',
   },
   {
-    year: '2024',
-    title: '25+ projects shipped',
+    year: 'Next',
+    title: 'Building a track record',
     description:
-      'Crossed our first big milestone — SaaS dashboards, e-commerce stores, and mobile apps, all in production.',
+      'Every project shipped adds to a real portfolio — and every client gets full attention because there is no queue yet.',
   },
   {
-    year: '2025',
-    title: 'Studio, not agency',
+    year: 'Later',
+    title: 'Growing, staying senior',
     description:
-      'Doubled down on staying small and senior — every project gets the founders, not a rotating junior team.',
-  },
-  {
-    year: 'Now',
-    title: 'Building with you',
-    description:
-      'Still hands-on, still shipping fast, still obsessed with the details clients actually notice.',
+      'If the studio grows, it grows slow and senior-first — small team, high craft, never a rotating cast of juniors.',
   },
 ]
 
@@ -51,7 +45,7 @@ export default function Story() {
         {/* ================= HEADER ================= */}
         <SectionHeading
           eyebrow="Our story"
-          heading="From one laptop to a studio that ships."
+          heading="Just getting started — and that's the point."
           className="mb-20 max-w-xl"
         />
 
