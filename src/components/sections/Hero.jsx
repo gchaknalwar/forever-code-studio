@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 import Button from '../common/Button'
 
 const STATS = [
-  { value: '10+', label: 'Projects shipped' },
-  { value: '6+', label: 'Happy clients' },
-  { value: '3+', label: 'Years building' },
-  { value: '98%', label: 'On-time delivery' },
+  { value: '2026', label: 'Studio founded' },
+  { value: 'Now', label: 'Accepting projects' },
+  { value: '<24h', label: 'Response time' },
+  { value: '100%', label: 'Hands-on delivery' },
 ]
 
 const container = {
